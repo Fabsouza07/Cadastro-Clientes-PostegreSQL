@@ -1,0 +1,22 @@
+# Diretórios e arquivos gerados por IDEs
+.idea/
+.vs/
+*.iml
+
+# Artefatos de compilação Java/Maven
+target/
+*.class
+
+# Configurações locais e credenciais
+src/main/resources/config.properties
+*.env
+.env
+.env.*
+!.env.example
+
+# Arquivos temporários e de sistema
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

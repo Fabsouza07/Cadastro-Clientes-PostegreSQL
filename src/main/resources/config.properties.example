@@ -1,0 +1,6 @@
+# Copie este arquivo como config.properties e preencha as credenciais locais.
+app.banco=PostgreSQL
+
+cadastro_clientes.postgresql.url=jdbc:postgresql://localhost:5432/cadastro_clientes
+cadastro_clientes.postgresql.usuario=postgres
+cadastro_clientes.postgresql.senha=
