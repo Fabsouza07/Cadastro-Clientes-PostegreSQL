@@ -1,12 +1,27 @@
 package br.com.cadastro.app;
 
-import br.com.cadastro.model.Usuario;
-import br.com.cadastro.service.UsuarioService;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Font;
 import java.sql.SQLException;
 import java.util.Optional;
-import javax.swing.*;
+import java.util.concurrent.ExecutionException;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import javax.swing.border.EmptyBorder;
+
+import br.com.cadastro.model.Usuario;
+import br.com.cadastro.service.UsuarioService;
 
 /** Tela de entrada e do cadastro do administrador inicial. */
 final class LoginFrame extends JFrame {
@@ -78,8 +93,10 @@ final class LoginFrame extends JFrame {
 
   private void executar(Tarefa tarefa) {
     new SwingWorker<Void, Void>() {
+      @Override
       protected Void doInBackground() throws Exception { tarefa.run(); return null; }
-      protected void done() { try { get(); } catch (Exception e) { Throwable t = e.getCause() == null ? e : e.getCause(); JOptionPane.showMessageDialog(LoginFrame.this, t.getMessage(), "Acesso", JOptionPane.ERROR_MESSAGE); senha.setText(""); } }
+      @Override
+      protected void done() { try { get(); } catch (InterruptedException | ExecutionException e) { Throwable t = e.getCause() == null ? e : e.getCause(); JOptionPane.showMessageDialog(LoginFrame.this, t.getMessage(), "Acesso", JOptionPane.ERROR_MESSAGE); senha.setText(""); } }
     }.execute();
   }
   @FunctionalInterface private interface Tarefa { void run() throws SQLException; }
