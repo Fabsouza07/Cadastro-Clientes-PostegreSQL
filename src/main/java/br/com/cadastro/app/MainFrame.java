@@ -102,7 +102,7 @@ final class MainFrame extends JFrame {
     p.setPreferredSize(new Dimension(220, 0));
     JLabel section = new JLabel("GESTÃO");
     section.setForeground(MUTED);
-    section.setFont(new Font("Segoe UI", Font.BOLD, 11));
+    section.setFont(new Font("Segoe UI", Font.BOLD, 13));
     section.setBorder(new EmptyBorder(28, 24, 10, 0));
     section.setAlignmentX(LEFT_ALIGNMENT);
     p.add(section);
@@ -535,10 +535,11 @@ final class MainFrame extends JFrame {
 
   private JButton navButton(String text, Runnable action) {
     JButton b = new JButton(text);
-    b.setMaximumSize(new Dimension(Integer.MAX_VALUE, 42));
+    b.setMaximumSize(new Dimension(Integer.MAX_VALUE, 46));
     b.setAlignmentX(LEFT_ALIGNMENT);
     b.setHorizontalAlignment(SwingConstants.LEFT);
     b.setBorder(new EmptyBorder(0, 24, 0, 0));
+    b.setFont(new Font("Segoe UI", Font.PLAIN, 14));
     b.setForeground(TEXT);
     b.setBackground(Color.WHITE);
     b.setFocusPainted(false);
